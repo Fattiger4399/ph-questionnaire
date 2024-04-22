@@ -1,6 +1,11 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import Test from '../components/test.vue'
+import Checkbox from '@/material/ph-checkbox.vue'
+import Radio from '@/material/ph-radio.vue'
+import Input from '@/material/ph-input.vue'
+import button from  '@/material/ph-button.vue'
 
 Vue.use(VueRouter)
 
@@ -11,13 +16,31 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/test',
+    name: 'test',
+    component: Test
+  },
+  {
+    path: '/checkbox',
+    name: 'checkbox',
+    component: Checkbox
+  },
+  {
+    path: '/input',
+    name: 'input',
+    component: Input
+  },
+  {
+    path: '/radio',
+    name: 'radio',
+    component: Radio
+  },
+  {
+    path: '/button',
+    name: 'button',
+    component: button
+  },
+  
 ]
 
 const router = new VueRouter({
