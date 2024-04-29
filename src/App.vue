@@ -7,6 +7,10 @@
     <router-link to="/radio">去radio</router-link> 
     <br>
     <router-link to="/button">去button</router-link> 
+    <br>
+    <router-link to="/h1">去标题组件</router-link>
+    <br>
+    <router-link to="/textarea">去描述框</router-link>
 
     <router-view/>
   </div>

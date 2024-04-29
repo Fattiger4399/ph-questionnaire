@@ -1,6 +1,6 @@
 <template>
     <div class="ph-input" @click="handleClick">
-        <div class="ph-input_1">
+        <div class="el-input_1">
             <span>{{ text }}</span>
             <div class="el-input_2">
                 <el-input v-model="inputvalue" placeholder="输入你的答案" style="width: 310px;"></el-input>

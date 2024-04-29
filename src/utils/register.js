@@ -118,4 +118,34 @@ registerConfig.register({
     
 },
 });
+
+registerConfig.register({
+  label: '标题',
+  render: function(h) {
+    return <ph-h1></ph-h1>;
+  },
+  key: 'ph-h1',
+  config:{
+    text: {
+        default: "标题文本",
+        type: String
+    },
+    
+},
+});
+
+registerConfig.register({
+  label: '描述文本',
+  render: function(h) {
+    return <ph-textarea></ph-textarea>;
+  },
+  key: 'ph-textarea',
+  config:{
+    text: {
+        default: "描述文本",
+        type: String
+    },
+    
+},
+});
 //03.30反省,事实上,我根本不需要传值进去

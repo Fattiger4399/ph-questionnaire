@@ -10,11 +10,17 @@ import phcheckbox from "@/material/ph-checkbox.vue";
 import phradio from "@/material/ph-radio";
 import phinput from "@/material/ph-input";
 import phbutton from "@/material/ph-button";
+import phh1 from './material/ph-h1.vue';
+import phtextarea from './material/ph-textarea.vue';
+
 
 Vue.component('ph-checkbox', phcheckbox)
 Vue.component('ph-radio', phradio)
 Vue.component('ph-input', phinput)
 Vue.component('ph-button', phbutton)
+Vue.component('ph-h1', phh1)
+Vue.component('ph-textarea', phtextarea)
+
 
 Vue.config.productionTip = false
 

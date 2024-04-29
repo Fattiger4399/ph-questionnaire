@@ -2,7 +2,29 @@
     <div>
         <!-- 工具 -->
         <div class="toolbar">
-            <el-button @click="showalldom">展示所有dom</el-button>
+            <el-button @click="showalldom">schema</el-button>
+            <div>
+                <!-- 组件工具操作 -->
+                <div>
+                    <el-button-group>
+                        <el-button icon="el-icon-delete-solid" @click="deletenode"></el-button>
+                        <el-button icon="el-icon-document-copy" @click="copynodefunc"></el-button>
+                        <el-button icon="el-icon-document-checked" @click="affixnode"></el-button>
+                        <el-button icon="el-icon-bottom" @click="bottomnode"></el-button>
+                        <el-button icon="el-icon-top" @click="topnode"></el-button>
+                    </el-button-group>
+                </div>
+            </div>
+            <div>
+                <el-button @click="drawer_1 = true" type="primary" style="margin-left: 16px;">
+                    预览
+                </el-button>
+                <el-drawer title="我是标题" :visible.sync="drawer_1" :with-header="false" size="90%">
+                    <div class="renderpage">
+                        <lcRender :dsl="dsl"></lcRender>
+                    </div>
+                </el-drawer>
+            </div>
         </div>
         <!-- 左侧组件区域 -->
         <div class="component">
@@ -23,7 +45,6 @@
                 <!-- 事件层 -->
                 <!-- 连线层 -->
                 <!-- handle层 -->
-
             </div>
         </div>
 
@@ -52,6 +73,7 @@ import Material from './material.vue'
 import test from './test.vue'
 import Setter from './setter.vue'
 
+import { deepCopy } from '../utils/deepCopy'
 import { registerConfig } from '../utils/register'
 import { removeChildrenBorder, addChildrenBorder } from '../utils/changeBorder'
 export default {
@@ -68,7 +90,9 @@ export default {
         return {
             component_id: 1,
             registerConfig: registerConfig,
+            drawer_1: false,
             drawer: false,
+            copynode: null,
             text: "sss",
             model: {
                 selected: null,
@@ -99,7 +123,7 @@ export default {
                     },
                     {
                         wid: 2,
-                        component: 'ph-radio',
+                        component: 'ph-checkbox',
                         props: {
                             No: 2,
                             title: "我是输入框",
@@ -115,41 +139,9 @@ export default {
                     },
                     {
                         wid: 3,
-                        component: 'ph-radio',
+                        component: 'ph-input',
                         props: {
                             No: 3,
-                            title: "我是输入框",
-                            options_1: "选项一一",
-                            options_2: "选项二二"
-                        },
-                        style: { top: '300px', left: '300px', zIndex: '1' },
-                        attrs: {
-
-                        },
-                        events: {
-                        }
-                    },
-                    {
-                        wid: 4,
-                        component: 'ph-radio',
-                        props: {
-                            No: 4,
-                            title: "我是输入框",
-                            options_1: "选项一一",
-                            options_2: "选项二二"
-                        },
-                        style: { top: '300px', left: '300px', zIndex: '1' },
-                        attrs: {
-
-                        },
-                        events: {
-                        }
-                    },
-                    {
-                        wid: 5,
-                        component: 'ph-radio',
-                        props: {
-                            No: 5,
                             title: "我是输入框",
                             options_1: "选项一一",
                             options_2: "选项二二"
@@ -181,6 +173,58 @@ export default {
             event.preventDefault();
             event.target.innerText = data;
         },
+        //节点工具方法
+        deletenode() {
+            console.log(this.model.selected);
+            const id = this.model.selected.wid - 1;
+            this.dsl.children.splice(id, 1);
+            //重置序号
+            this.numberreset();
+
+        },
+        copynodefunc() {
+            this.copynode = this.model.selected
+        },
+        affixnode() {
+            const id = this.model.selected.wid - 1;
+            const goodnode = deepCopy(this.copynode)
+            this.dsl.children.splice(id, 0, goodnode);
+            this.numberreset();
+        },
+        bottomnode() {
+            const id = this.model.selected.wid;
+            if (id < this.dsl.children.length) {
+
+                const goodnode = deepCopy(this.model.selected)
+                this.dsl.children.splice(id + 1, 0, goodnode)
+                this.dsl.children.splice(id - 1, 1)
+                this.model.selected = this.dsl.children[id]
+                this.numberreset();
+            } else {
+                alert("不能再下了")
+            }
+
+        },
+        topnode() {
+            const id = this.model.selected.wid;
+            if (id>1) {
+                const goodnode = deepCopy(this.model.selected)
+                this.dsl.children.splice(id - 2, 0, goodnode)
+                this.dsl.children.splice(id, 1)
+                this.model.selected = this.dsl.children[id - 2]
+                this.numberreset();
+            }else{
+                alert("不能再上了")
+            }
+
+        },
+        numberreset() {
+            this.dsl.children.forEach((currentvalue, index) => {
+                currentvalue.wid = index + 1;
+                currentvalue.props.No = currentvalue.wid
+            })
+        },
+        //选中方法
         select(config) {
             // 去除所有选中样式
             this.dsl = removeChildrenBorder(this.dsl);
@@ -190,10 +234,20 @@ export default {
 
             // 组件拖拽处理
             const editorElement = this.$refs.editor.$el;
-            const node = `div.${this.model.selected.component}`;
+            // const node = `div.${this.model.selected.component}`;
             const allElements = editorElement.querySelectorAll('div');
-            const childElements = editorElement.querySelectorAll(node);
-
+            // const childElements = editorElement.querySelectorAll(node);
+            // 在添加新的监听器之前，先移除旧的监听器
+            // console.log(childElements)
+            allElements.forEach((item) => {
+                item.removeEventListener('dragstart', this.dragStartHandler)
+                item.removeEventListener('dragend', this.dragEndHandler)
+            })
+            // 在添加新的监听器之前，先移除旧的监听器
+            // if (childElements[sameid]) {
+            //     childElements[sameid].removeEventListener('dragstart', this.dragStartHandler);
+            //     childElements[sameid].removeEventListener('dragend', this.dragEndHandler);
+            // }
             let sameid = this.model.selected.wid - 1;
             // 筛选出以 ph- 开头的 div 元素
             const phElements = Array.from(allElements).filter(div => {
@@ -209,7 +263,6 @@ export default {
                 phoffsetTopbox.push(item.offsetTop)
                 phoffsetHeightbox.push(item.offsetHeight)
             })
-
             // 定义事件处理函数，并保存引用
             this.dragStartHandler = (e) => {
             };
@@ -222,7 +275,6 @@ export default {
                 let newdsl;
                 if (e.offsetY) {
                     const arraylength = this.dsl.children.length;
-                    console.log(arraylength, phoffsetTopbox)
                     //将一号位组件拖拽到三号位上方
                     //拖拽大约为范围为150-250px
                     let i, j;
@@ -232,7 +284,6 @@ export default {
                     //phoffsetHeightbox
                     const mouseupY = phoffsetTopbox[using_id - 1] + e.offsetY;
                     const childlength = this.dsl.children.length
-                    console.log(mouseupY)
                     //向下
                     if (e.offsetY > 0) {
                         for (i = using_id; i <= this.dsl.children.length;) {
@@ -241,6 +292,7 @@ export default {
                             //向下
                             if (mouseupY > phoffsetTopbox[i] + 0.5 * phoffsetHeightbox[i] && mouseupY < phoffsetTopbox[i + 1] + 0.5 * phoffsetHeightbox[i + 1]) {
                                 i++;
+                                console.log(666)
                                 break;
                             } else if (mouseupY > 0 && mouseupY < phoffsetTopbox[i] + 0.5 * phoffsetHeightbox[i]) {
                                 break;
@@ -252,6 +304,16 @@ export default {
                             else {
                                 i++;
                             }
+                        }
+                        console.log(" i is  " + i)
+                        //选中组件与目标位置不同
+                        if (this.model.selected.wid != i) {
+                            //复制
+                            let copied_element = this.dsl.children[this.model.selected.wid - 1]
+                            // //插入
+                            this.dsl.children.splice(i, 0, copied_element)
+                            //删除
+                            this.dsl.children.splice(using_id - 1, 1)
                         }
                     } else {
                         //向上
@@ -272,33 +334,35 @@ export default {
                                 i--;
                             }
                         }
+                        if (this.model.selected.wid != i) {
+                            //复制
+                            let copied_element = this.dsl.children[this.model.selected.wid - 1]
+                            // //插入
+                            this.dsl.children.splice(i, 0, copied_element)
+                            //删除
+                            this.dsl.children.splice(using_id, 1)
+                        }
                     }
-                    console.log(this.dsl.children)
-                    if (this.model.selected.wid != i) {
-                        //复制
-                        let copied_element = this.dsl.children[this.model.selected.wid - 1]
-                        // //插入
-                        this.dsl.children.splice(i, 0, copied_element)
-                        //删除
-                        this.dsl.children.splice(using_id - 1, 1)
-                    }
-                    console.log(i)
+                    //重置序号
+                    this.dsl.children.forEach((currentvalue, index) => {
+                        currentvalue.wid = index + 1;
+                        currentvalue.props.No = currentvalue.wid
+                    })
                 }
             };
-            // 在添加新的监听器之前，先移除旧的监听器
-            if (childElements[sameid]) {
-                childElements[sameid].removeEventListener('dragstart', this.dragStartHandler);
-                childElements[sameid].removeEventListener('dragend', this.dragEndHandler);
-            }
+
             // 添加新的监听器
-            childElements[sameid].setAttribute("draggable", "true");
-            childElements[sameid].addEventListener('dragstart', this.dragStartHandler);
-            childElements[sameid].addEventListener('dragend', this.dragEndHandler);
+            console.log(phElements)
+            phElements[sameid].setAttribute("draggable", "true");
+            phElements[sameid].addEventListener('dragstart', this.dragStartHandler);
+            phElements[sameid].addEventListener('dragend', this.dragEndHandler);
 
             //更新视图
             this.$refs.editor.$forceUpdate();
         },
-
+        torenderpage() {
+            this.$router.push("/renderpage");
+        },
         update() {
             // console.log(this.model.selected.text)
             // console.log(this.text)
@@ -415,9 +479,11 @@ export default {
     width: 100%;
     height: 5.5%;
     border: 1px solid lightblue;
-    position: absolute;
-    left: 0;
-    top: 0;
+    display: flex;
+    justify-content: space-between;
+    /* 让子元素在容器中均匀分布，推动右侧内容到最右侧 */
+    align-items: center;
+    /* 垂直居中 */
 }
 
 .component {
@@ -432,14 +498,28 @@ export default {
     /* 设置子元素垂直排列 */
 }
 
+.renderpage {
+    position: relative;
+    top: 20px;
+    left: 20px;
+    height: 1000px;
+    width: 375px;
+    border: 2px solid black;
+    border-radius: 10px 10px 10px 10px;
+    overflow-y: auto;
+}
+
 .editPart {
     width: 375px;
-    height: 750px;
+    height: 655px;
     border: 1px solid lightblue;
     position: absolute;
     left: calc((100% - 375px) / 2);
     /* 计算水平居中位置 */
-    top: 6%
+    top: 6%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* 垂直滚动 */
 }
 
 .setter {

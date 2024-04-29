@@ -5,12 +5,13 @@ import Test from '../components/test.vue'
 import Checkbox from '@/material/ph-checkbox.vue'
 import Radio from '@/material/ph-radio.vue'
 import Input from '@/material/ph-input.vue'
-import button from  '@/material/ph-button.vue'
+import button from '@/material/ph-button.vue'
+import h1 from'@/material/ph-h1.vue'
+import textarea from'@/material/ph-textarea.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     name: 'home',
     component: HomeView
@@ -40,7 +41,15 @@ const routes = [
     name: 'button',
     component: button
   },
-  
+  {
+    path: '/h1',
+    name: 'h1',
+    component: h1
+  }, {
+    path: '/textarea',
+    name: 'textarea',
+    component: textarea
+  },
 ]
 
 const router = new VueRouter({
