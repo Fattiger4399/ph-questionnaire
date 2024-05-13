@@ -25,7 +25,7 @@ export default {
     },
     data() {
         return {
-            inputvalue: "好东西"
+            inputvalue: "请输入"
         };
     },
     methods: {
