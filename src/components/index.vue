@@ -67,6 +67,7 @@
 </template>
 
 <script>
+import dsl from './dsl.json';
 import lcEditor from './editor.vue'
 import lcRender from './render.vue'
 import Material from './material.vue'
@@ -97,66 +98,11 @@ export default {
             model: {
                 selected: null,
             },
-            dsl: {
-                component: 'div',
-                wid: 0,
-                props: {
-                },
-                style: { background: '	#FFF8DC' },
-                children: [
-
-                    {
-                        wid: 1,
-                        component: 'ph-radio',
-                        props: {
-                            No: 1,
-                            title: "我是输入框",
-                            options_1: "选项一一",
-                            options_2: "选项二二"
-                        },
-                        style: { top: '300px', left: '300px', zIndex: '1', border: "2px dashed red" },
-                        attrs: {
-
-                        },
-                        events: {
-                        }
-                    },
-                    {
-                        wid: 2,
-                        component: 'ph-checkbox',
-                        props: {
-                            No: 2,
-                            title: "我是输入框",
-                            options_1: "选项一一",
-                            options_2: "选项二二"
-                        },
-                        style: { top: '300px', left: '300px', zIndex: '1' },
-                        attrs: {
-
-                        },
-                        events: {
-                        }
-                    },
-                    {
-                        wid: 3,
-                        component: 'ph-input',
-                        props: {
-                            No: 3,
-                            title: "我是输入框",
-                            options_1: "选项一一",
-                            options_2: "选项二二"
-                        },
-                        style: { top: '300px', left: '300px', zIndex: '1' },
-                        attrs: {
-
-                        },
-                        events: {
-                        }
-                    },
-
-                ]
-            }
+            dsl: {}
         }
+    },
+    created() {
+        this.dsl = dsl
     },
 
     methods: {
@@ -207,13 +153,13 @@ export default {
         },
         topnode() {
             const id = this.model.selected.wid;
-            if (id>1) {
+            if (id > 1) {
                 const goodnode = deepCopy(this.model.selected)
                 this.dsl.children.splice(id - 2, 0, goodnode)
                 this.dsl.children.splice(id, 1)
                 this.model.selected = this.dsl.children[id - 2]
                 this.numberreset();
-            }else{
+            } else {
                 alert("不能再上了")
             }
 

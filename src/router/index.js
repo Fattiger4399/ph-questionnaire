@@ -8,13 +8,20 @@ import Input from '@/material/ph-input.vue'
 import button from '@/material/ph-button.vue'
 import h1 from'@/material/ph-h1.vue'
 import textarea from'@/material/ph-textarea.vue'
+import workspace from '@/components/workspace.vue'
+import editpage from '@/components/index.vue'
 
 Vue.use(VueRouter)
 
 const routes = [{
     path: '/',
-    name: 'home',
-    component: HomeView
+    name: 'workspace',
+    component: workspace
+  },
+  {
+    path: '/editpage',
+    name: 'editpage',
+    component: editpage
   },
   {
     path: '/test',

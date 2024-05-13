@@ -1,15 +1,84 @@
 {
     "component": "div",
+    "wid": 0,
     "props": {},
-    "style": {},
+    "style": {
+        "background": "#FFF8DC"
+    },
     "children": [{
-        "component": "button",
-        "props": {},
-        "style": {},
-        "text": "cao"
-    }]
+            "wid": 1,
+            "component": "ph-h1",
+            "props": {
+                "text": "饮食偏好调查问卷"
+            },
+            "style": {},
+            "attrs": {},
+            "events": {}
+        },
+        {
+            "wid": 1,
+            "component": "ph-radio",
+            "props": {
+                "No": 1,
+                "title": "你是否喜欢吃肉",
+                "options_1": "是",
+                "options_2": "否"
+            },
+            "style": {
+                "top": "300px",
+                "left": "300px",
+                "zIndex": "1"
+            },
+            "attrs": {},
+            "events": {}
+        }, {
+            "wid": 2,
+            "component": "ph-checkbox",
+            "props": {
+                "No": 2,
+                "title": "选择你常吃的菜系",
+                "options": ["鲁菜", "苏菜", "浙菜"]
+            },
+            "style": {
+                "top": "300px",
+                "left": "300px",
+                "zIndex": "1"
+            },
+            "attrs": {},
+            "events": {}
+        }, {
+            "wid": 3,
+            "component": "ph-input",
+            "props": {
+                "No": 3,
+                "title": "补充你喜欢的菜"
+            },
+            "style": {},
+            "attrs": {},
+            "events": {}
+        },
+        {
+            "wid": 4,
+            "component": "ph-input",
+            "props": {
+                "No": 4,
+                "title": "其他"
+            },
+            "style": {},
+            "attrs": {},
+            "events": {}
+        },
+        {
+            "wid": 4,
+            "component": "ph-button",
+            "props": {
+                "No": 5,
+                "text":"提交",
+                "title": ""
+            },
+            "style": {},
+            "attrs": {},
+            "events": {}
+        }
+    ]
 }
-
-
-
-

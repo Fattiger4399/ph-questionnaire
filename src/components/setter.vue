@@ -8,6 +8,10 @@
             <span>标题</span>
             <el-input v-model="dsl.props.title"></el-input>
         </div>
+        <div v-if="dsl.props.text">
+            <span>文本</span>
+            <el-input v-model="dsl.props.text"></el-input>
+        </div>
         <div v-if="dsl.props.options_1">
             <span>选项文本_1</span>
             <el-input v-model="dsl.props.options_1"></el-input>
@@ -20,6 +24,9 @@
             <div v-for="(item,id) in dsl.props.options" :key="item">
                 <span>选项{{id+1}}</span>
                 <el-input v-model="dsl.props.options[id]"></el-input>
+            </div>
+            <div>
+                <el-button icon="el-icon-plus" circle @click="addnode"></el-button>
             </div>
         </div>
 
@@ -42,6 +49,9 @@ export default {
         console.log(this.dsl)
     },
     methods: {
+        addnode(){
+            this.dsl.props.options.push("选项")
+        },
         dosth() {
             console.log(this.dsl)
         }

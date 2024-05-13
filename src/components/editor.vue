@@ -34,14 +34,14 @@ export default {
             }
             result.style = { ...dsl.style }
 
-            if (self.model.selected) {
-                if (self.model.selected.wid == dsl.wid) {
-                    // 获取所有的按钮元素
-                    const allElements = document.getElementsByTagName("div");
-                    // console.log(allElements)
+            // if (self.model.selected) {
+            //     if (self.model.selected.wid == dsl.wid) {
+            //         // 获取所有的按钮元素
+            //         const allElements = document.getElementsByTagName("div");
+            //         // console.log(allElements)
 
-                }
-            }
+            //     }
+            // }
             if (dsl.events) {
                 result.on = {
                     click: function (e) {
