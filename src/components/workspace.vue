@@ -1,13 +1,21 @@
 <template>
     <div class="document-interface">
         <el-container>
+
             <!-- 左侧菜单栏 -->
             <el-aside width="300px" class="menu-aside">
                 <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
                     :default-openeds="openeds">
+                    <el-submenu index="0">
+                        <template slot="title">
+                            <i class="el-icon-monitor" style="color: #409EFF ;font-size: 30px;padding-right: 13px;"></i>
+                            <span>工作台</span>
+                        </template>
+                    </el-submenu>
                     <el-submenu index="1">
                         <template slot="title">
-                            <i class="el-icon-question" style="color: #409EFF ;font-size: 30px;padding-right: 13px;"></i>
+                            <i class="el-icon-question"
+                                style="color: #409EFF ;font-size: 30px;padding-right: 13px;"></i>
                             <span>问卷模板</span>
                         </template>
                         <el-menu-item-group>
@@ -131,8 +139,13 @@
 
                 <!-- 右侧下方空白 -->
                 <el-main class="content-main">
+                    <!-- 渲染 -->
                     <div class="document-content">
-                        <lc-editor ref="editor" :dsl="dsl" class="lc-editor"></lc-editor>
+                        <ContainerPanel :formTemplate="formTemplate" @handleSelectItem="handleSelectItem"
+                            :selectItem="selectItem" :arrow="arrow">
+                        </ContainerPanel>
+
+
                     </div>
                 </el-main>
             </el-container>
@@ -141,20 +154,57 @@
 </template>
 
 <script>
-import lcEditor from './editor.vue'
+import ContainerPanel from '../engine-core/index.vue'
 
 import dsl from './dsl.json'
 export default {
     name: 'DocumentInterface',
     components: {
-        lcEditor
+        ContainerPanel,
     },
     data() {
         return {
             // 可以在这里定义数据
             dsl: {},
-            openeds: ['1', '2', '3']
+            openeds: ['1', '2', '3'],
+            selectItem: {},
+            arrow: false,
+            i18nkey: getUUID(),
+            formTemplate: this.template || {
+                list: [
+                ],
+                config: {
+                    labelPosition: 'left',
+                    labelWidth: 100,
+                    size: 'mini',
+                    outputHidden: true, //  是否输出隐藏字段的值 默认打开,所有字段都输出
+                    hideRequiredMark: false,
+                    syncLabelRequired: false,
+                    labelSuffix: '', // 标签后缀
+                    customStyle: ''
+                }
+            },
         };
+    },
+    props: {
+        template: {
+            type: Object,
+            default: () => {
+                return {
+                    list: [],
+                    config: {
+                        labelPosition: 'top',
+                        labelWidth: 80,
+                        size: 'mini',
+                        outputHidden: true, //  是否输出隐藏字段的值 默认打开,所有字段都输出
+                        hideRequiredMark: false,
+                        syncLabelRequired: false,
+                        labelSuffix: '', // 标签后缀
+                        customStyle: ''
+                    }
+                }
+            }
+        },
     },
     created() {
         this.dsl = dsl

@@ -55,14 +55,22 @@
             },
             "attrs": {},
             "events": {}
-        }, {
+        },
+        {
             "wid": 3,
-            "component": "ph-input",
+            "component": "ph-checkbox",
             "props": {
                 "No": 3,
-                "title": "补充你喜欢的菜"
+                "title": "选择你喜欢的口味类型",
+                "options": [
+                    "清淡（姜葱鸡）", "麻辣（水煮牛肉）", "酸甜（糖醋鱼，糖醋排骨）", "咸鮮", "酸"
+                ]
             },
-            "style": {},
+            "style": {
+                "top": "300px",
+                "left": "300px",
+                "zIndex": "1"
+            },
             "attrs": {},
             "events": {}
         },
@@ -71,6 +79,17 @@
             "component": "ph-input",
             "props": {
                 "No": 4,
+                "title": "补充你喜欢的菜"
+            },
+            "style": {},
+            "attrs": {},
+            "events": {}
+        },
+        {
+            "wid": 5,
+            "component": "ph-input",
+            "props": {
+                "No": 5,
                 "title": "其他"
             },
             "style": {},
@@ -78,10 +97,10 @@
             "events": {}
         },
         {
-            "wid": 4,
+            "wid": 6,
             "component": "ph-button",
             "props": {
-                "No": 5,
+                "No": 6,
                 "text": "提交",
                 "title": ""
             },

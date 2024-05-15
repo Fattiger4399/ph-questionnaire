@@ -12,7 +12,8 @@ import phinput from "@/material/ph-input";
 import phbutton from "@/material/ph-button";
 import phh1 from './material/ph-h1.vue';
 import phtextarea from './material/ph-textarea.vue';
-
+import NgForm  from 'ng-form-element'
+import 'ng-form-element/lib/ng-form-element.css'
 
 Vue.component('ph-checkbox', phcheckbox)
 Vue.component('ph-radio', phradio)
@@ -22,10 +23,11 @@ Vue.component('ph-h1', phh1)
 Vue.component('ph-textarea', phtextarea)
 
 Vue.config.productionTip = false
-
 Vue.use(ElementUI);
-Vue.use(Antd)
 
+
+// 注册组件库
+Vue.use(NgForm)  
 new Vue({
   router,
   render: h => h(App)
