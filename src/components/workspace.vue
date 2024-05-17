@@ -364,8 +364,11 @@ export default {
     methods: {
         //获取菜单栏点击项 index
         handleMenuItemClick(index) {
-            const jsonData = require('./examplejson/DietaryhabitsSouth.json');
-            // const data = JSON.parse(jsonData);
+            const map =require('./examplejson/map.js')
+            let __dirname = './examplejson/'
+            let path = map.default[index]
+            const jsonData = require(`${__dirname + path}`);
+
             this.formTemplate = jsonData
             console.log(jsonData)
         },
