@@ -1,0 +1,316 @@
+{
+	"list": [
+		{
+			"type": "text",
+			"event_": false,
+			"listen_": false,
+			"options": {
+				"textAlign": "center",
+				"fontSize": 25,
+				"showRequiredMark": false,
+				"showRequiredMarkScript": "",
+				"hidden": false,
+				"bold": true
+			},
+			"label": "南方饮食习惯调查问卷",
+			"labelWidth": 0,
+			"width": "100%",
+			"span": 24,
+			"key": "text_17159145519532",
+			"model": "text_17159145519532",
+			"dynamicLabel": false
+		},
+		{
+			"type": "radio",
+			"options": {
+				"defaultValue": "",
+				"placeholder": "请输入",
+				"dynamic": 0,
+				"options": [
+					{
+						"value": "1",
+						"label": "是"
+					},
+					{
+						"value": "2",
+						"label": "否"
+					}
+				],
+				"methodType": "get",
+				"dynamicPostData": "",
+				"remoteFunc": "",
+				"dataPath": "",
+				"remoteValue": "",
+				"remoteLabel": "",
+				"dictType": "",
+				"disableItemScript": "",
+				"hidden": false,
+				"disabled": false,
+				"linkage": false,
+				"linkData": []
+			},
+			"label": "1.你是否为素食者？",
+			"labelWidth": 1,
+			"width": "100%",
+			"span": 24,
+			"model": "radio_17159146336412",
+			"key": "radio_17159146336412",
+			"rules": [
+				{
+					"required": false,
+					"message": "必填项",
+					"trigger": [
+						"blur"
+					]
+				}
+			],
+			"dynamicLabel": false
+		},
+		{
+			"type": "radio",
+			"options": {
+				"defaultValue": "",
+				"placeholder": "请输入",
+				"dynamic": 0,
+				"options": [
+					{
+						"value": "1",
+						"label": "是"
+					},
+					{
+						"value": "2",
+						"label": "否"
+					}
+				],
+				"methodType": "get",
+				"dynamicPostData": "",
+				"remoteFunc": "",
+				"dataPath": "",
+				"remoteValue": "",
+				"remoteLabel": "",
+				"dictType": "",
+				"disableItemScript": "",
+				"hidden": false,
+				"disabled": false,
+				"linkage": false,
+				"linkData": []
+			},
+			"label": "2.您是否长期食用红肉（猪牛羊肉）？",
+			"labelWidth": 1,
+			"width": "100%",
+			"span": 24,
+			"model": "radio_17159146382362",
+			"key": "radio_17159146382362",
+			"rules": [
+				{
+					"required": false,
+					"message": "必填项",
+					"trigger": [
+						"blur"
+					]
+				}
+			],
+			"dynamicLabel": false
+		},
+		{
+			"type": "checkbox",
+			"options": {
+				"defaultValue": [],
+				"placeholder": "请输入",
+				"dynamic": 0,
+				"options": [
+					{
+						"value": "1",
+						"label": "鲁菜（爆炒腰花、糖醋鲤鱼、葱烧海参、油爆双脆）"
+					},
+					{
+						"value": "2",
+						"label": "苏菜（鸡汁煮干丝、软兜长鱼、盐水鸭、蟹粉狮子头）"
+					},
+					{
+						"value": "3",
+						"label": "徽菜（臭鳜鱼、毛豆腐、一品锅"
+					},
+					{
+						"value": "4",
+						"label": "浙菜（西湖醋鱼、龙井虾仁、东坡肉、荷叶粉蒸肉、宋嫂鱼羹）"
+					},
+					{
+						"value": "5",
+						"label": "闽菜（佛跳墙、醉排骨、荔枝肉、福建酿豆腐、八宝红鲟饭）"
+					},
+					{
+						"value": "6",
+						"label": "川菜（麻婆豆腐、回锅肉、夫妻肺片、水煮牛肉、毛血旺、酸菜鱼）"
+					},
+					{
+						"value": "7",
+						"label": "粤菜（白切鸡、烤乳猪、红烧乳鸽、糖醋咕噜肉、客家酿豆腐）"
+					},
+					{
+						"value": "8",
+						"label": "湘菜（剁椒鱼头、毛氏紅烧肉、腊味合蒸、东安子鸡、麻辣子鸡）"
+					}
+				],
+				"methodType": "get",
+				"dynamicPostData": "",
+				"remoteFunc": "",
+				"dataPath": "",
+				"remoteValue": "",
+				"remoteLabel": "",
+				"dictType": "",
+				"disableItemScript": "",
+				"hidden": false,
+				"disabled": false,
+				"linkage": false,
+				"linkData": []
+			},
+			"label": "3.选择你平时常吃的菜系",
+			"labelWidth": 1,
+			"width": "100%",
+			"span": 24,
+			"model": "checkbox_17159146365822",
+			"key": "checkbox_17159146365822",
+			"rules": [
+				{
+					"required": false,
+					"message": "必填项",
+					"trigger": [
+						"blur"
+					]
+				}
+			],
+			"dynamicLabel": false
+		},
+		{
+			"type": "checkbox",
+			"options": {
+				"defaultValue": [],
+				"placeholder": "请输入",
+				"dynamic": 0,
+				"options": [
+					{
+						"value": "1",
+						"label": "清淡（姜葱鸡）"
+					},
+					{
+						"value": "2",
+						"label": "麻辣（水煮牛肉）"
+					},
+					{
+						"value": "3",
+						"label": "酸甜（糖醋鱼，糖醋排骨）"
+					},
+					{
+						"value": "4",
+						"label": "咸鮮"
+					},
+					{
+						"value": "5",
+						"label": "酸"
+					}
+				],
+				"methodType": "get",
+				"dynamicPostData": "",
+				"remoteFunc": "",
+				"dataPath": "",
+				"remoteValue": "",
+				"remoteLabel": "",
+				"dictType": "",
+				"disableItemScript": "",
+				"hidden": false,
+				"disabled": false,
+				"linkage": false,
+				"linkData": []
+			},
+			"label": "4.选择你喜欢的口味类型",
+			"labelWidth": 1,
+			"width": "100%",
+			"span": 24,
+			"model": "checkbox_17159150337002",
+			"key": "checkbox_17159150337002",
+			"rules": [
+				{
+					"required": false,
+					"message": "必填项",
+					"trigger": [
+						"blur"
+					]
+				}
+			],
+			"dynamicLabel": false
+		},
+		{
+			"type": "input",
+			"options": {
+				"defaultValue": "",
+				"type": "text",
+				"prepend": "",
+				"append": "",
+				"placeholder": "请输入",
+				"maxLength": 0,
+				"clearable": false,
+				"hidden": false,
+				"disabled": false
+			},
+			"label": "5.补充其他你常吃的菜",
+			"labelWidth": 1,
+			"width": "100%",
+			"span": 24,
+			"model": "input_17159151846512",
+			"key": "input_17159151846512",
+			"rules": [
+				{
+					"required": false,
+					"message": "必填项",
+					"trigger": [
+						"blur"
+					]
+				}
+			],
+			"dynamicLabel": false
+		},
+		{
+			"type": "textarea",
+			"options": {
+				"defaultValue": "",
+				"rows": 4,
+				"placeholder": "请输入",
+				"maxLength": 0,
+				"clearable": false,
+				"autosize": false,
+				"hidden": false,
+				"disabled": false
+			},
+			"label": "6.其他（补充）",
+			"labelWidth": 1,
+			"width": "100%",
+			"span": 24,
+			"model": "textarea_17159152065542",
+			"key": "textarea_17159152065542",
+			"rules": [
+				{
+					"required": false,
+					"message": "必填项",
+					"trigger": [
+						"blur"
+					]
+				}
+			],
+			"dynamicLabel": false
+		},
+		{
+			"type": "button"
+		}
+	],
+	"config": {
+		"labelPosition": "top",
+		"labelWidth": 80,
+		"size": "mini",
+		"outputHidden": true,
+		"hideRequiredMark": false,
+		"syncLabelRequired": false,
+		"labelSuffix": "",
+		"customStyle": ""
+	}
+}

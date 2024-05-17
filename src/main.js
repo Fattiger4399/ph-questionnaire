@@ -1,26 +1,39 @@
 import Vue from 'vue'
 import App from './App.vue'
-import test from './test.vue';
-import Index from './components/index.vue'
+// import test from './test.vue';
+// import Index from './components/index.vue'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import Antd from 'ant-design-vue';
 import router from './router'
-import phcheckbox from "@/material/ph-checkbox.vue";
-import phradio from "@/material/ph-radio";
-import phinput from "@/material/ph-input";
-import phbutton from "@/material/ph-button";
-import phh1 from './material/ph-h1.vue';
-import phtextarea from './material/ph-textarea.vue';
-import NgForm  from 'ng-form-element'
-import 'ng-form-element/lib/ng-form-element.css'
+// import phcheckbox from "@/material/ph-checkbox.vue";
+// import phradio from "@/material/ph-radio";
+// import phinput from "@/material/ph-input";
+// import phbutton from "@/material/ph-button";
+// import phh1 from './material/ph-h1.vue';
+// import phtextarea from './material/ph-textarea.vue';
+import NgForm  from 'ng-form-element';
+import 'ng-form-element/lib/ng-form-element.css';
 
-Vue.component('ph-checkbox', phcheckbox)
-Vue.component('ph-radio', phradio)
-Vue.component('ph-input', phinput)
-Vue.component('ph-button', phbutton)
-Vue.component('ph-h1', phh1)
-Vue.component('ph-textarea', phtextarea)
+import NgComponents from './packages/components/index.js'
+ // 导入组件库
+ import FormDesign from './packages/index.js'
+ // ng-form组件国际化资源
+ import zh from './packages/locale/lang/zh_CN'
+ 
+ // 本地国际化资源
+ import ngZh from './locale/lang/zh_CN.js'
+ import deepmerge from 'deepmerge';
+ // 将本地的国际化资源和组件内资源合并
+ const mergeZh =  deepmerge(zh, ngZh, { clone: true })
+
+ Vue.use(FormDesign , {locale: mergeZh , components: null})
+
+// Vue.component('ph-checkbox', phcheckbox)
+// Vue.component('ph-radio', phradio)
+// Vue.component('ph-input', phinput)
+// Vue.component('ph-button', phbutton)
+// Vue.component('ph-h1', phh1)
+// Vue.component('ph-textarea', phtextarea)
 
 Vue.config.productionTip = false
 Vue.use(ElementUI);
