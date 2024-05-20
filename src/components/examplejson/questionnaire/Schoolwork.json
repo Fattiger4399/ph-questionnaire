@@ -1,0 +1,375 @@
+{
+	"list": [
+		{
+			"type": "text",
+			"event_": false,
+			"listen_": false,
+			"options": {
+				"textAlign": "center",
+				"fontSize": 35,
+				"showRequiredMark": false,
+				"showRequiredMarkScript": "",
+				"hidden": false,
+				"bold": true
+			},
+			"label": "大学生学情调查问卷",
+			"labelWidth": 0,
+			"width": "100%",
+			"span": 24,
+			"key": "text_17161027796732",
+			"model": "text_17161027796732",
+			"dynamicLabel": false
+		},
+		{
+			"type": "text",
+			"event_": false,
+			"listen_": false,
+			"options": {
+				"textAlign": "left",
+				"fontSize": 13,
+				"showRequiredMark": false,
+				"showRequiredMarkScript": "",
+				"hidden": false,
+				"bold": false
+			},
+			"label": "亲爱的同学：     \n您好！这是一份关于大学生学习情况的调查，旨在探究和分析大学生学业求助行为及其相关方面的关系，一共由三部分构成。本问卷中的答案没有对”与不对”之分，而且问卷均采用匿名形式，所得数据也仅供统计分析，我们会严格保密，请不要有任何顾虑。  您的真诚参与将为我们的研究提供宝贵的依据！所以希望您能根据您的真实想法及真实情况如实填写问卷，对于您的真诚合作，我们在此表示感谢！",
+			"labelWidth": 0,
+			"width": "100%",
+			"span": 24,
+			"key": "text_17161036798532",
+			"model": "text_17161036798532",
+			"dynamicLabel": false
+		},
+		{
+			"type": "radio",
+			"options": {
+				"defaultValue": "",
+				"placeholder": "请输入",
+				"dynamic": 0,
+				"options": [
+					{
+						"value": "1",
+						"label": "男"
+					},
+					{
+						"value": "2",
+						"label": "女"
+					}
+				],
+				"methodType": "get",
+				"dynamicPostData": "",
+				"remoteFunc": "",
+				"dataPath": "",
+				"remoteValue": "",
+				"remoteLabel": "",
+				"dictType": "",
+				"disableItemScript": "",
+				"hidden": false,
+				"disabled": false,
+				"linkage": false,
+				"linkData": []
+			},
+			"label": "1.性别",
+			"labelWidth": 1,
+			"width": "100%",
+			"span": 24,
+			"model": "radio_17161029216742",
+			"key": "radio_17161029216742",
+			"rules": [
+				{
+					"required": false,
+					"message": "必填项",
+					"trigger": [
+						"blur"
+					]
+				}
+			],
+			"dynamicLabel": false
+		},
+		{
+			"type": "input",
+			"options": {
+				"defaultValue": "",
+				"type": "text",
+				"prepend": "",
+				"append": "",
+				"placeholder": "请输入你的专业",
+				"maxLength": 0,
+				"clearable": false,
+				"hidden": false,
+				"disabled": false
+			},
+			"label": "2.专业",
+			"labelWidth": 1,
+			"width": "100%",
+			"span": 24,
+			"model": "input_17161031117082",
+			"key": "input_17161031117082",
+			"rules": [
+				{
+					"required": false,
+					"message": "必填项",
+					"trigger": [
+						"blur"
+					]
+				}
+			],
+			"dynamicLabel": false
+		},
+		{
+			"type": "radio",
+			"options": {
+				"defaultValue": "",
+				"placeholder": "请输入",
+				"dynamic": 0,
+				"options": [
+					{
+						"value": "1",
+						"label": "大一"
+					},
+					{
+						"value": "2",
+						"label": "大二"
+					},
+					{
+						"value": "3",
+						"label": "大三"
+					},
+					{
+						"value": "4",
+						"label": "大四"
+					}
+				],
+				"methodType": "get",
+				"dynamicPostData": "",
+				"remoteFunc": "",
+				"dataPath": "",
+				"remoteValue": "",
+				"remoteLabel": "",
+				"dictType": "",
+				"disableItemScript": "",
+				"hidden": false,
+				"disabled": false,
+				"linkage": false,
+				"linkData": []
+			},
+			"label": "年级",
+			"labelWidth": 1,
+			"width": "100%",
+			"span": 24,
+			"model": "radio_17161032673522",
+			"key": "radio_17161032673522",
+			"rules": [
+				{
+					"required": false,
+					"message": "必填项",
+					"trigger": [
+						"blur"
+					]
+				}
+			],
+			"dynamicLabel": false
+		},
+		{
+			"type": "radio",
+			"options": {
+				"defaultValue": "",
+				"placeholder": "请输入",
+				"dynamic": 0,
+				"options": [
+					{
+						"value": "1",
+						"label": "城市"
+					},
+					{
+						"value": "2",
+						"label": "农村"
+					}
+				],
+				"methodType": "get",
+				"dynamicPostData": "",
+				"remoteFunc": "",
+				"dataPath": "",
+				"remoteValue": "",
+				"remoteLabel": "",
+				"dictType": "",
+				"disableItemScript": "",
+				"hidden": false,
+				"disabled": false,
+				"linkage": false,
+				"linkData": []
+			},
+			"label": "4.户籍",
+			"labelWidth": 1,
+			"width": "100%",
+			"span": 24,
+			"model": "radio_17161030059242",
+			"key": "radio_17161030059242",
+			"rules": [
+				{
+					"required": false,
+					"message": "必填项",
+					"trigger": [
+						"blur"
+					]
+				}
+			],
+			"dynamicLabel": false
+		},
+		{
+			"type": "radio",
+			"options": {
+				"defaultValue": "",
+				"placeholder": "请输入",
+				"dynamic": 0,
+				"options": [
+					{
+						"value": "1",
+						"label": "是"
+					},
+					{
+						"value": "2",
+						"label": "否"
+					}
+				],
+				"methodType": "get",
+				"dynamicPostData": "",
+				"remoteFunc": "",
+				"dataPath": "",
+				"remoteValue": "",
+				"remoteLabel": "",
+				"dictType": "",
+				"disableItemScript": "",
+				"hidden": false,
+				"disabled": false,
+				"linkage": false,
+				"linkData": []
+			},
+			"label": "5.是否独生子女",
+			"labelWidth": 1,
+			"width": "100%",
+			"span": 24,
+			"model": "radio_17161030206072",
+			"key": "radio_17161030206072",
+			"rules": [
+				{
+					"required": false,
+					"message": "必填项",
+					"trigger": [
+						"blur"
+					]
+				}
+			],
+			"dynamicLabel": false
+		},
+		{
+			"type": "radio",
+			"options": {
+				"defaultValue": "",
+				"placeholder": "请输入",
+				"dynamic": 0,
+				"options": [
+					{
+						"value": "1",
+						"label": "学生干部"
+					},
+					{
+						"value": "2",
+						"label": "无，普通学生"
+					}
+				],
+				"methodType": "get",
+				"dynamicPostData": "",
+				"remoteFunc": "",
+				"dataPath": "",
+				"remoteValue": "",
+				"remoteLabel": "",
+				"dictType": "",
+				"disableItemScript": "",
+				"hidden": false,
+				"disabled": false,
+				"linkage": false,
+				"linkData": []
+			},
+			"label": "6.担任职务",
+			"labelWidth": 1,
+			"width": "100%",
+			"span": 24,
+			"model": "radio_17161031971082",
+			"key": "radio_17161031971082",
+			"rules": [
+				{
+					"required": false,
+					"message": "必填项",
+					"trigger": [
+						"blur"
+					]
+				}
+			],
+			"dynamicLabel": false
+		},
+		{
+			"type": "radio",
+			"options": {
+				"defaultValue": "",
+				"placeholder": "请输入",
+				"dynamic": 0,
+				"options": [
+					{
+						"value": "1",
+						"label": "较好"
+					},
+					{
+						"value": "2",
+						"label": "中等"
+					},
+					{
+						"value": "3",
+						"label": "较差"
+					}
+				],
+				"methodType": "get",
+				"dynamicPostData": "",
+				"remoteFunc": "",
+				"dataPath": "",
+				"remoteValue": "",
+				"remoteLabel": "",
+				"dictType": "",
+				"disableItemScript": "",
+				"hidden": false,
+				"disabled": false,
+				"linkage": false,
+				"linkData": []
+			},
+			"label": "7.您的学习成绩在班上属于",
+			"labelWidth": -1,
+			"width": "100%",
+			"span": 24,
+			"model": "radio_17161032599462",
+			"key": "radio_17161032599462",
+			"rules": [
+				{
+					"required": false,
+					"message": "必填项",
+					"trigger": [
+						"blur"
+					]
+				}
+			],
+			"dynamicLabel": false
+		},
+		{
+			"type": "button"
+		}
+	],
+	"config": {
+		"labelPosition": "top",
+		"labelWidth": 80,
+		"size": "mini",
+		"outputHidden": true,
+		"hideRequiredMark": false,
+		"syncLabelRequired": false,
+		"labelSuffix": "",
+		"customStyle": ""
+	}
+}

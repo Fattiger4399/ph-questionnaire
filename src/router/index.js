@@ -9,7 +9,7 @@ import VueRouter from 'vue-router'
 // import h1 from'@/material/ph-h1.vue'
 // import textarea from'@/material/ph-textarea.vue'
 import workspace from '@/components/workspace.vue'
-// import editpage from '@/components/index.vue'
+import editpage from '@/components/editpage.vue'
 
 Vue.use(VueRouter)
 
@@ -18,11 +18,11 @@ const routes = [{
     name: 'workspace',
     component: workspace
   },
-  // {
-  //   path: '/editpage',
-  //   name: 'editpage',
-  //   component: editpage
-  // },
+  {
+    path: '/editpage',
+    name: 'editpage',
+    component: editpage
+  },
   
 ]
 

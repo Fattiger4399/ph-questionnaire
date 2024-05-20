@@ -4,8 +4,8 @@
 
             <!-- 左侧菜单栏 -->
             <el-aside width="300px" class="menu-aside">
-                <el-menu default-active="2" class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose"
-                    :default-openeds="openeds" @select="handleMenuItemClick">
+                <el-menu :default-active="activeIndex" class="el-menu-vertical-demo" :default-openeds="openeds"
+                    @select="handleMenuItemClick">
                     <el-submenu index="0">
                         <template slot="title">
                             <i class="el-icon-monitor" style="color: #409EFF ;font-size: 30px;padding-right: 13px;"></i>
@@ -79,6 +79,30 @@
                                 <template>
                                     <i class="el-icon-edit"></i>
                                     耗材报销模板
+                                </template>
+                            </el-menu-item>
+                        </el-menu-item-group>
+                    </el-submenu>
+                    <el-submenu index="4">
+                        <template slot="title">
+                            <i class="el-icon-document"
+                                style="color: #409EFF ;font-size: 30px;padding-right: 15px;"></i>
+                            <span>用户登录注册模板</span>
+                        </template>
+                        <el-menu-item-group>
+                            <template slot="title">
+                                分组一</template>
+
+                            <el-menu-item index="3-1">
+                                <template>
+                                    <i class="el-icon-edit"></i>
+                                    新用户注册信息表
+                                </template>
+                            </el-menu-item>
+                            <el-menu-item index="3-2">
+                                <template>
+                                    <i class="el-icon-edit"></i>
+                                    用户登录模板
                                 </template>
                             </el-menu-item>
                         </el-menu-item-group>
@@ -163,6 +187,7 @@ import { use } from '../packages/locale/index'
 import { getUUID } from '../packages/utils/index'
 import cloneDeep from 'lodash/cloneDeep'
 import LocalMixin from '../packages/locale/mixin.js'
+import { deepCopy } from '@/utils/deepCopy'
 
 export default {
     mixins: [LocalMixin],
@@ -180,6 +205,7 @@ export default {
             openeds: ['1', '2', '3'],
             selectItem: {},
             arrow: false,
+            activeIndex: '1-1',
             formTemplate: this.template || {
                 list: [
                 ],
@@ -203,7 +229,7 @@ export default {
                 return {
                     list: [
                         {
-                            type: "button",
+                            type: "text",
                             event_: false,
                             listen_: false,
                             options: {
@@ -218,7 +244,7 @@ export default {
                                 round: false,
                                 disabled: false
                             },
-                            label: "按钮",
+                            label: "左侧选择相应模板以展示",
                             labelWidth: 0,
                             width: "100%",
                             span: 24,
@@ -243,78 +269,9 @@ export default {
                 }
             }
         },
-        customComponents: {
-            type: Array,
-            default: () => []
-        },
-        // 按钮显示隐藏
-        clear: {
-            type: Boolean,
-            default: true
-        },
-        preview: {
-            type: Boolean,
-            default: true
-        },
-        imp: {
-            type: Boolean,
-            default: true
-        },
-        exp: {
-            type: Boolean,
-            default: true
-        },
-        // 外部属性配置
-        config: {
-            type: Object
-        },
-        //基础组件是否要展示或待选组件列表集合
-        basicItem: {
-            type: [Array, Boolean],
-            default: true
-        },
-        //装饰组件是否要展示或待选组件列表集合
-        decorateItem: {
-            type: [Array, Boolean],
-            default: true
-        },
-        //布局组件是否要展示或待选组件列表集合
-        layoutItem: {
-            type: [Array, Boolean],
-            default: true
-        },
-        //应用组件是否要展示或待选组件列表集合
-        applicationItem: {
-            type: [Array, Boolean],
-            default: true
-        }
+
     },
     created: {
-        templateConfig() {
-            if (this.formTemplate) return this.formTemplate.config
-            return {}
-        },
-        // 配置中的http配置
-        httpConfig() {
-            //2023-10-11 lyf 判断是否注入了全局config
-            // 优先判断内部
-            if (this.config && this.config.httpConfig) {
-                return this.config.httpConfig
-            } else if (this.$ngofrm_httpConfig) {
-                return this.$ngofrm_httpConfig
-            }
-            return null
-        },
-        // 自定义组件
-        components() {
-            if (this.$ngofrm_components && this.$ngofrm_components.length > 0) {
-                return this.$ngofrm_components
-            } else if (this.customComponents && this.customComponents.length > 0) {
-                return this.customComponents
-            }
-
-            return undefined
-        }
     },
     watch: {
         httpConfig: {
@@ -360,17 +317,34 @@ export default {
         if (this.httpConfig) {
             window.nghttpConfig = this.httpConfig
         }
+        const index =localStorage.getItem('userindex')
+        if (index) {
+            this.activeIndex = index
+            const map = require('./examplejson/map.js')
+            let __dirname = './examplejson/'
+            let path = map.default[index]
+            const jsonData = require(`${__dirname + path}`);
+            this.formTemplate = jsonData
+        }
     },
     methods: {
         //获取菜单栏点击项 index
         handleMenuItemClick(index) {
-            const map =require('./examplejson/map.js')
+            localStorage.setItem('userindex', index)
+
+            const map = require('./examplejson/map.js')
             let __dirname = './examplejson/'
             let path = map.default[index]
             const jsonData = require(`${__dirname + path}`);
-
             this.formTemplate = jsonData
-            console.log(jsonData)
+            const dsl = deepCopy(this.formTemplate)
+            console.log(this.formTemplate)
+            console.log(dsl)
+
+            localStorage.setItem('user', JSON.stringify(dsl));
+            // const dsldata = localStorage.getItem('user')
+            // console.log(JSON.parse(dsldata))
+
         },
         handleSelectItem(record) {
             console.log(record)
