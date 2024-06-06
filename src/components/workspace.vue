@@ -34,7 +34,21 @@
                                     学业完成情况调查问卷
                                 </template>
                             </el-menu-item>
+                            <el-menu-item index="1-3">
+                                <template>
+                                    <i class="el-icon-edit"></i>
+                                    就业情况调查问卷
+                                </template>
+                            </el-menu-item>
+                            <el-menu-item index="1-4">
+                                <template>
+                                    <i class="el-icon-edit"></i>
+                                    满意度调查调查问卷
+                                </template>
+                            </el-menu-item>
+                            
                         </el-menu-item-group>
+                        
                     </el-submenu>
                     <el-submenu index="2">
                         <template slot="title">
@@ -317,7 +331,7 @@ export default {
         if (this.httpConfig) {
             window.nghttpConfig = this.httpConfig
         }
-        const index =localStorage.getItem('userindex')
+        const index = localStorage.getItem('userindex')
         if (index) {
             this.activeIndex = index
             const map = require('./examplejson/map.js')
@@ -342,8 +356,8 @@ export default {
             console.log(dsl)
 
             localStorage.setItem('user', JSON.stringify(dsl));
-            // const dsldata = localStorage.getItem('user')
-            // console.log(JSON.parse(dsldata))
+            const dsldata = localStorage.getItem('user')
+            console.log(JSON.parse(dsldata))
 
         },
         handleSelectItem(record) {

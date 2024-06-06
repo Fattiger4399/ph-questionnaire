@@ -1,6 +1,9 @@
 export default {
   ngform: {
     header: {
+      undo:"撤回",
+      redo:"重做",
+      publish:'发布',
       imp: '导入',
       exp: '导出',
       clear: '清空',

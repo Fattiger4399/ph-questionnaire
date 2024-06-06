@@ -306,7 +306,7 @@ export default {
   overflow-y: auto;
   overflow-x: hidden;
   background-color: #d5d5d5;
-  padding: 100px 50px 0 50px;
+  /* padding: 100px 50px 0 50px; */
 }
 
 .form-design .properties-panel {

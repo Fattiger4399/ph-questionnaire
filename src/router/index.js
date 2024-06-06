@@ -10,6 +10,8 @@ import VueRouter from 'vue-router'
 // import textarea from'@/material/ph-textarea.vue'
 import workspace from '@/components/workspace.vue'
 import editpage from '@/components/editpage.vue'
+import Userlogin from '@/components/login/userlogin.vue'
+import Publish from '@/components/publish.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +24,16 @@ const routes = [{
     path: '/editpage',
     name: 'editpage',
     component: editpage
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: Userlogin
+  },
+  {
+    path: '/publish',
+    name: 'publish',
+    component: Publish
   },
   
 ]

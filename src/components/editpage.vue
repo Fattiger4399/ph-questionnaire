@@ -1,26 +1,3 @@
-<!-- <template>
-    <NgFormDesign :template="dsl"></NgFormDesign>
-</template>
-
-<script>
-import { NgFormDesign } from '@/packages';
-export default {
-    components: {
-        NgFormDesign
-    },
-    data() {
-        return {
-            dsl: {}
-        }
-    },
-    created() {
-        const dsl = localStorage.getItem('user')
-        this.dsl = dsl
-    }
-}
-</script>
-
-<style></style> -->
 <template>
     <el-container class="form-design">
         <el-header class="header" height="40px">
@@ -228,9 +205,27 @@ export default {
         }
     },
     created() {
-        let jsonuserdsl =localStorage.getItem('user')
+        let jsonuserdsl = localStorage.getItem('user')
+
         let objectuserdsl = JSON.parse(jsonuserdsl)
-        this.formTemplate = objectuserdsl
+        let realdsl = {
+            list:[]
+        }
+        // 遍历对象的键，这些键代表了数组索引
+        for (let key in objectuserdsl.list) {
+            // 使用对象的值（这里是一个对象）来构造数组元素
+            const arrayItem = objectuserdsl.list[key];
+            // 将对象转换为数组元素，并添加到结果数组中
+            realdsl.list.push(arrayItem);
+        }
+        console.log(realdsl)
+        // realdsl = {
+        //     ...list,
+        //     config: objectuserdsl.config
+        // }
+        realdsl.config = objectuserdsl.config
+
+        this.formTemplate = realdsl
         if (this.formTemplate == null) {
             // this.formTemplate = {
             //   list: [],
@@ -320,6 +315,8 @@ export default {
     overflow-y: auto;
     overflow-x: hidden;
     background-color: #d5d5d5;
+    padding: 0px 0px 0 0px;
+
 }
 
 .form-design .properties-panel {

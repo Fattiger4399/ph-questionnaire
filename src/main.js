@@ -13,7 +13,7 @@ import router from './router'
 // import phtextarea from './material/ph-textarea.vue';
 import NgForm  from 'ng-form-element';
 import 'ng-form-element/lib/ng-form-element.css';
-
+import axios from 'axios'
 import NgComponents from './packages/components/index.js'
  // 导入组件库
  import FormDesign from './packages/index.js'
@@ -37,7 +37,7 @@ import NgComponents from './packages/components/index.js'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI);
-
+Vue.prototype.$axios = axios
 
 // 注册组件库
 Vue.use(NgForm)  
